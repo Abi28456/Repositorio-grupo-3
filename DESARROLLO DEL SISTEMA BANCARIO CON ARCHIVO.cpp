@@ -105,7 +105,7 @@ void realizar_deposito(Cuenta *cuenta) {
 	float monto;
 	char entrada[20];
 	while (true) {
-		printf("\nIngrese el monto a depositar (formato decimal con coma, ej.: 100,25): ");
+		printf("\nIngrese el monto a depositar: ");
 		scanf("%s", entrada);
 		
 		// Validar formato y convertir

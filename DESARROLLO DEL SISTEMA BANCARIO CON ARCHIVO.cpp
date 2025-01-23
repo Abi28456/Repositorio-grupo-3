@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <conio.h> // Para ocultar la contraseña (getch)
+#include <conio.h> // Para ocultar la contraseÃ±a (getch)
 
 #define MAX_CUENTAS 5
 #define MAX_INTENTOS 3
@@ -18,7 +18,7 @@ typedef struct {
 	int num_transacciones;
 } Cuenta;
 
-// Declaración de las cuentas
+// DeclaraciÃ³n de las cuentas
 Cuenta cuentas[MAX_CUENTAS] = {
 	{202411263, "Abigail01", 0.0, {0}, 0},
 {202410494, "Azaela02", 0.0, {0}, 0},
@@ -27,12 +27,12 @@ Cuenta cuentas[MAX_CUENTAS] = {
 	{202410331, "Jhon05", 0.0, {0}, 0}
 };
 
-// Función para limpiar la pantalla
+// FunciÃ³n para limpiar la pantalla
 void limpiar_pantalla() {
 	system("cls");
 }
 
-// Función para validar entrada de un número de cuenta
+// FunciÃ³n para validar entrada de un nÃºmero de cuenta
 bool validar_numero_cuenta(const char *entrada) {
 	if (strlen(entrada) > MAX_CARACTERES_CUENTA) return false;
 	for (int i = 0; entrada[i] != '\0'; i++) {
@@ -41,7 +41,7 @@ bool validar_numero_cuenta(const char *entrada) {
 	return true;
 }
 
-// Función para ocultar la contraseña
+// FunciÃ³n para ocultar la contraseÃ±a
 void leer_contrasena(char *contrasena) {
 	char c;
 	int i = 0;
@@ -57,7 +57,7 @@ void leer_contrasena(char *contrasena) {
 	contrasena[i] = '\0';
 }
 
-// Función para encontrar una cuenta por número (transferencias)
+// FunciÃ³n para encontrar una cuenta por nÃºmero (transferencias)
 int buscar_cuenta(int numero_cuenta) {
 	for (int i = 0; i < MAX_CUENTAS; i++) {
 		if (cuentas[i].numero_cuenta == numero_cuenta) {
@@ -67,7 +67,7 @@ int buscar_cuenta(int numero_cuenta) {
 	return -1;
 }
 
-// Función para cargar saldos desde el archivo
+// FunciÃ³n para cargar saldos desde el archivo
 void cargar_saldos() {
 	FILE *archivo = fopen(ARCHIVO_USUARIOS, "r");
 	if (archivo == NULL) {
@@ -85,7 +85,7 @@ void cargar_saldos() {
 	printf("\nSaldos cargados exitosamente desde '%s'.\n", ARCHIVO_USUARIOS);
 }
 
-// Función para guardar saldos en el archivo
+// FunciÃ³n para guardar saldos en el archivo
 void guardar_saldos() {
 	FILE *archivo = fopen(ARCHIVO_USUARIOS, "w");
 	if (archivo == NULL) {
@@ -101,35 +101,27 @@ void guardar_saldos() {
 	printf("\nSaldos guardados exitosamente en '%s'.\n", ARCHIVO_USUARIOS);
 }
 
-// Función para realizar un depósito
+// FunciÃ³n para realizar un depÃ³sito
 void realizar_deposito(Cuenta *cuenta) {
-	float monto;
-	char entrada[20];
-	while (true) {
-		printf("\nIngrese el monto a depositar (formato decimal con coma, ej.: 100,25): ");
-		scanf("%s", entrada);
-		
-		// Validar formato y convertir
-		char *coma = strchr(entrada, ',');
-		if (coma) {
-			*coma = '.'; // Sustituir coma por punto para atof
-			monto = atof(entrada);
-			
-			if (monto >= 0.01 && monto <= 10000.00) {
-				cuenta->saldo += monto;
-				cuenta->transacciones[cuenta->num_transacciones++] = monto;
-				limpiar_pantalla();
-				printf("\nDeposito exitoso. Nuevo saldo: %.2f\n", cuenta->saldo);
-				guardar_saldos();
-				break;
-			}
-		}
-		limpiar_pantalla();
-		printf("\nMonto invalido. Intente nuevamente.\n");
-	}
+    float monto;
+    while (true) {
+        printf("\nIngrese el monto a depositar (ej.: 100.25): ");
+        if (scanf("%f", &monto) == 1 && monto >= 0.01 && monto <= 10000.00) {
+            cuenta->saldo += monto;
+            cuenta->transacciones[cuenta->num_transacciones++] = monto;
+            limpiar_pantalla();
+            printf("\nDepÃ³sito exitoso. Nuevo saldo: %.2f\n", cuenta->saldo);
+            guardar_saldos();
+            break;
+        } else {
+            limpiar_pantalla();
+            printf("\nMonto invÃ¡lido. Intente nuevamente.\n");
+            while (getchar() != '\n'); // Limpiar el buffer de entrada
+        }
+    }
 }
 
-// Función para realizar un retiro
+// FunciÃ³n para realizar un retiro
 void realizar_retiro(Cuenta *cuenta) {
 	int opcion;
 	float monto;
@@ -182,7 +174,7 @@ void realizar_retiro(Cuenta *cuenta) {
 	} while (true);
 }
 
-// Función para realizar una transferencia
+// FunciÃ³n para realizar una transferencia
 void realizar_transferencia(Cuenta *cuenta) {
 	int numero_destino;
 	float monto;
@@ -244,7 +236,7 @@ void realizar_transferencia(Cuenta *cuenta) {
 	}
 }
 
-// Función para mostrar el historial de transacciones
+// FunciÃ³n para mostrar el historial de transacciones
 void mostrar_transacciones(Cuenta *cuenta) {
 	printf("\nHistorial de transacciones:\n");
 	if (cuenta->num_transacciones == 0) {
@@ -256,7 +248,7 @@ void mostrar_transacciones(Cuenta *cuenta) {
 	}
 }
 
-// Menú principal
+// MenÃº principal
 void menu_principal(Cuenta *cuenta) {
 	int opcion;
 	char entrada[10];
@@ -303,7 +295,7 @@ void menu_principal(Cuenta *cuenta) {
 	} while (opcion != 6);
 }
 
-// Función principal
+// FunciÃ³n principal
 int main() {
 	int numero_cuenta;
 	char contrasena[15];

@@ -32,14 +32,14 @@ void limpiar_pantalla() {
 	system("cls");
 }
 
-// Función para validar entrada de un número de cuenta
-bool validar_numero_cuenta(const char *entrada) {
-	if (strlen(entrada) > MAX_CARACTERES_CUENTA) return false;
-	for (int i = 0; entrada[i] != '\0'; i++) {
-		if (entrada[i] < '0' || entrada[i] > '9') return false;
-	}
-	return true;
+
+// Funcion para validar entrada flotante y evitar errores en scanf
+bool validar_entrada_flotante(const char *entrada, float *resultado) {
+    char *endptr;
+    *resultado = strtof(entrada, &endptr);
+    return (*endptr == '\0' && *resultado >= MIN_MONTO);
 }
+
 
 // Función para ocultar la contraseña
 void leer_contrasena(char *contrasena) {

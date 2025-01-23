@@ -5,7 +5,7 @@ cd <nombre-del-repositorio>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <conio.h> // Para ocultar la contraseña (getch)
-
+//Hola
 #define MAX_CUENTAS 5
 #define MAX_INTENTOS 3
 #define MAX_CARACTERES_CUENTA 9

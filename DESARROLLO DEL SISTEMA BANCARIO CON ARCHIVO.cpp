@@ -8,7 +8,9 @@
 #define MAX_INTENTOS 3
 #define MAX_CARACTERES_CUENTA 9
 #define ARCHIVO_USUARIOS "bancaUsuarios.txt"
-#define MAX_TRANSACCIONES 200 
+#define MAX_TRANSACCIONES 200
+
+// ESTO ES UN COMENTARIO
 
 // Estructura para las cuentas
 typedef struct {

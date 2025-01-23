@@ -20,7 +20,7 @@ typedef struct {
 	int num_transacciones;
 } Cuenta;
 
-// 
+// Validacion de cuentas generadas predefinidamente.
 Cuenta cuentas[MAX_CUENTAS] = {
 	{202411263, "Abigail01", 0.0, {0}, 0},
 {202410494, "Azaela02", 0.0, {0}, 0},

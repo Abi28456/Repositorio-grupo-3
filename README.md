@@ -1,4 +1,5 @@
-Tarea Colaborativa (GRUPO 3) En el siguiente documento se explica los pasos que siguió el equipo, los conflictos que se afrontó y como se resolvió.
+#Tarea Colaborativa (GRUPO 3)# 
+En el siguiente documento se explica los pasos que siguió el equipo, los conflictos que se afrontó y como se resolvió.
 
 Pasos:
 1. Se identificó e investigó las funcionalidades que necesitaba tener el cajero.

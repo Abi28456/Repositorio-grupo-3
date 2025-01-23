@@ -8,7 +8,7 @@
 #define MAX_INTENTOS 3
 #define MAX_CARACTERES_CUENTA 9
 #define ARCHIVO_USUARIOS "bancaUsuarios.txt"
-
+//HOLA 
 // Estructura para las cuentas
 typedef struct {
 	int numero_cuenta;

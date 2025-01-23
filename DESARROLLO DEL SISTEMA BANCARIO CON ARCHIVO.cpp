@@ -59,15 +59,16 @@ void leer_contrasena(char *contrasena) {
 	contrasena[i] = '\0';
 }
 
-// Función para encontrar una cuenta por número (transferencias)
+// Mejorar validacion en buscar_cuenta para evitar errores inesperados
 int buscar_cuenta(int numero_cuenta) {
-	for (int i = 0; i < MAX_CUENTAS; i++) {
-		if (cuentas[i].numero_cuenta == numero_cuenta) {
-			return i;
-		}
-	}
-	return -1;
+    for (int i = 0; i < MAX_CUENTAS; i++) {
+        if (cuentas[i].numero_cuenta == numero_cuenta) {
+            return i;
+        }
+    }
+    return -1;
 }
+
 
 // Función para cargar saldos desde el archivo
 void cargar_saldos() {

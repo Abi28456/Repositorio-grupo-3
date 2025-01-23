@@ -67,23 +67,22 @@ int buscar_cuenta(int numero_cuenta) {
 	return -1;
 }
 
-// Función para cargar saldos desde el archivo
-void cargar_saldos() {
-	FILE *archivo = fopen(ARCHIVO_USUARIOS, "r");
-	if (archivo == NULL) {
-		printf("\nNo se encontro el archivo '%s'. Se inicializan los saldos a 0.\n", ARCHIVO_USUARIOS);
-		return;
-	}
-	
-	for (int i = 0; i < MAX_CUENTAS; i++) {
-		if (fscanf(archivo, "%f", &cuentas[i].saldo) != 1) {
-			cuentas[i].saldo = 0.0;
-		}
-	}
-	
-	fclose(archivo);
-	printf("\nSaldos cargados exitosamente desde '%s'.\n", ARCHIVO_USUARIOS);
+// Refactorizar persistencia en funciones separadas
+bool cargar_saldos(Cuenta *cuentas, int num_cuentas) {
+    FILE *archivo = fopen(ARCHIVO_USUARIOS, "r");
+    if (archivo == NULL) {
+        return false; // Archivo no encontrado
+    }
+    for (int i = 0; i < num_cuentas; i++) {
+        if (fscanf(archivo, "%f", &cuentas[i].saldo) != 1) {
+            fclose(archivo);
+            return false; // Archivo corrupto
+        }
+    }
+    fclose(archivo);
+    return true;
 }
+
 
 // Función para guardar saldos en el archivo
 void guardar_saldos() {
